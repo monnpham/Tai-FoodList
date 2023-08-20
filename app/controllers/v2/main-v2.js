@@ -54,38 +54,20 @@ window.editFood = (id) => {
         .then((res) => {
             console.log(res);
             showDataForm(res.data);
-            window.updateFood = () => {
-                let data = layThongTin();
-                foodServ.updateFood(id, data)
-                    .then((res) => {
-                        console.table(data)
-                        fetchFoodList();
-                        onSuccess("Sửa thành công");
-                    })
-                    .catch((err) => {
-                        console.log(err)
-                    })
-                console.log("update");
-
-
-            }
         })
         .catch((err) => {
             console.log(err);
         });
 };
 
-// window.updateFood = () => {
-//     let data = layThongTin();
-//     foodServ.updateFood(id)
-//         .then((res) => {
-//             console.log(res);
-//             onSuccess("Sửa thành công");
-//             fetchFoodList();
-//         })
-//         .catch((err) => {
-//             console.log(err);
-//         })
-// }
-
-//window.addFood = addFood;
+window.updateFood = () => {
+    let data = layThongTin();
+    foodServ.updateFood(data.ma, data)
+        .then((res) => {
+            fetchFoodList();
+            onSuccess("Sửa thành công");
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+}
